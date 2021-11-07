@@ -23,8 +23,8 @@ if (process.env.activeExchange == 'binance'){
   const api = require('binance');
   const beautifyResponse = false;
   exchangeAPI = new api.BinanceRest({
-    timeout: parseInt(process.env.restTimeout), // Optional, defaults to 15000, is the request time out in milliseconds
-    recvWindow: parseInt(process.env.restRecvWindow), // Optional, defaults to 5000, increase if you're getting timestamp errors
+    timeout: parseInt(process.env.restTimeout || 15000), // Optional, defaults to 15000, is the request time out in milliseconds
+    recvWindow: parseInt(process.env.restRecvWindow || 5000), // Optional, defaults to 5000, increase if you're getting timestamp errors
     disableBeautification: beautifyResponse
   });
   exchangeAPI.WS = new api.BinanceWS(beautifyResponse);
